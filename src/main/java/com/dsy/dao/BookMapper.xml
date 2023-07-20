@@ -3,9 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BookMapper">
-    <select id="selectBlog" resultType="Blog">
-        select *
-        from Blog
-        where id = #{id}
-  </select>
+    <insert id="addBooks" parameterType="Books">
+        insert into ssmbuild.books (bookName, bookCounts, detail)
+        values (#{bookName},#{bookCounts},#{detail});
+    </insert>
+    <delete id="deleteBookById" parameterType="Integer">
+        delete from ssmbuild.books where bookID=#{bookId};
+    </delete>
+    <update id="updateBooks" parameterType="Books">
+        update ssmbuild.books
+        set bookName=#{bookName},bookCounts=#{bookCounts},detail=#{detail}
+        where bookID=#{bookID};
+    </update>
+    <select id="queryBookById" parameterType="Integer" resultType="Books">
+        select * from ssmbuild.books where bookID=#{bookId};
+    </select>
+    <select id="queryAllBooks" resultType="Books">
+        select * from ssmbuild.books
+    </select>
 </mapper>

@@ -3,28 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties resource="jdbc.properties"/>
     <typeAliases><!--设置类型别名-->
-        <!--        <typeAlias type="com.wwg.mybatis.pojo.User" alias="abc"></typeAlias>&lt;!&ndash;若不设置alias默认user为别名，不区分大小写&ndash;&gt;-->
         <package name="com.dsy.pojo"/><!--通过包设置，所有类名-->
     </typeAliases>
-    <environments default="development">
-        <!--environments配置环境-->
-        <environment id="development">
-            <transactionManager type="JDBC"/> <!--事务管理器-->
-            <dataSource type="POOLED">  <!-- 数据源 -->
-                <property name="driver" value="${jdbc.driver}"/>
-                <property name="url" value="${jdbc.url}"/>
-                <property name="username" value="${jdbc.username}"/>
-                <property name="password" value="${jdbc.password}"/>
-            </dataSource>
-        </environment>
-    </environments>
 
 
     <mappers>
-        <!--        <mapper resource="mappers/UserMapper.xml"/>-->
-        <!--以包的方式引入映射文件。-->
-        <package name="com.wwg.mybatis.mapper"/>
+        <mapper class="com.dsy.dao.BookMapper"/>
     </mappers>
+
+
 </configuration>
